@@ -1,0 +1,118 @@
+﻿@model Homent.Models.tblHouse
+
+@{
+    ViewBag.Title = "AddHouse";
+}
+
+
+@using (Html.BeginForm("AddHouse", "House", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+
+    @Html.Partial("_Navbar")
+    <div class="container mt-2 shadow-sm bg-white pt-3 rounded">
+        <h4 class="text-center text-primary d-flex justify-content-center align-items-center gap-2">
+            <i class="material-icons-round text-primary add-home-icon">
+                home
+            </i>Add House
+        </h4>
+        <div class="add-house-form">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-md-6 bg-white p-4">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            @Html.EditorFor(model => model.OwnerID, new { htmlAttributes = new { @class = "form-control add-input", placeholder = "Owner id", @Value = Request.Cookies["ownerID"].Value, @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.OwnerID, "", new { @class = "text-danger invalid-msg" })
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            @Html.EditorFor(model => model.HouseNo, new { htmlAttributes = new { @class = "form-control add-input", placeholder = "House no." } })
+                            @Html.ValidationMessageFor(model => model.HouseNo, "", new { @class = "text-danger invalid-msg" })
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        @Html.EditorFor(model => model.HouseName, new { htmlAttributes = new { @class = "form-control add-input", placeholder = "House name" } })
+                        @Html.ValidationMessageFor(model => model.HouseName, "", new { @class = "text-danger invalid-msg" })
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            @Html.DropDownList("Type", new SelectList(ViewBag.Type, "HouseType", "HouseType"), "Select type", htmlAttributes: new { @class = "form-select add-input" })
+                            @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger invalid-msg" })
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            @Html.DropDownList("Room", new SelectList(ViewBag.Room, "HouseRoom", "HouseRoom"), "Select room", htmlAttributes: new { @class = "form-select add-input" })
+                            @Html.ValidationMessageFor(model => model.Room, "", new { @class = "text-danger invalid-msg" })
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            @Html.EditorFor(model => model.FloorArea, new { htmlAttributes = new { @class = "form-control add-input", placeholder = "Floor area in sqft" } })
+                            @Html.ValidationMessageFor(model => model.FloorArea, "", new { @class = "text-danger invalid-msg" })
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control add-input", placeholder = "Status" } })
+                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger invalid-msg" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control add-input", @cols = 53, @rows = 6, placeholder = "Description" })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger invalid-msg" })
+                    </div>
+
+                </div>
+                <div class="col-md-6 bg-white p-4">
+                    <div class="form-group mb-3">
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control add-input", placeholder = "Address" } })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger invalid-msg" })
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            @Html.DropDownList("State", new SelectList(ViewBag.State, "StateName", "StateName"), "Select state", htmlAttributes: new { @class = "form-select add-input", placeholder = "State" })
+                            @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger invalid-msg" })
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control add-input", placeholder = "City" } })
+                            @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger invalid-msg" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            @Html.EditorFor(model => model.Rent, new { htmlAttributes = new { @class = "form-control add-input", placeholder = "Rent per month" } })
+                            @Html.ValidationMessageFor(model => model.Rent, "", new { @class = "text-danger invalid-msg" })
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            @Html.EditorFor(model => model.Deposit, new { htmlAttributes = new { @class = "form-control add-input", placeholder = "Deposit" } })
+                            @Html.ValidationMessageFor(model => model.Deposit, "", new { @class = "text-danger invalid-msg" })
+                        </div>
+                    </div>
+                    <div class="form-group upload-file mb-3">
+                        @*<label for="Image" class="col-md-12 text-sm-center text-md-center pt-4">Upload image</label>*@
+                        <input type="file" name="Image" id="Image" accept="image/*" class="form-control-file" style="" onchange="showPreview(event);" />
+                        <img id="img-preview">
+                        @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger invalid-msg" })
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="submit" value="Add house" class="btn btn-primary hm-add-btn" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <P>@ViewBag.Exception</P>
+        <p>@ViewBag.ErrorAddingMsg</p>
+    </div>
+}
+<script type="text/javascript">
+    function showPreview(event) {
+        if (event.target.files.length > 0) {
+            var src = URL.createObjectURL(event.target.files[0]);
+            var preview = document.getElementById("img-preview");
+            preview.src = src;
+            preview.style.display = "block";
+        }
+    }
+    setTimeout(function () {
+        $(".invalid-msg").fadeOut();
+    }, 5000);
+</script>

@@ -1,0 +1,78 @@
+﻿@model Homent.Models.tblTenant
+
+@{
+    ViewBag.Title = "Sign up tenant";
+}
+
+<div class="sign-up-form-container p-2">
+    <div class="container">
+        <div class="row row d-flex justify-content-center ">
+            <div class="col-md-4 d-none bg-primary position-relative d-md-none d-lg-flex justify-content-center align-items-center flex-column ">
+                <img src="~/Content/Images/hm-logo-white.png" alt="homent-logo" width="200" class="mb-4 boarding-img" />
+                @Html.ActionLink("Already have an account? Login", "Login", "", new { @class = " text-white position-absolute bottom-0 mb-3" })
+            </div>
+            <div class="col-lg-4 col-md-8 col-sm-10 col-10 bg-white">
+                @using (Html.BeginForm())
+                {
+                    <div class="form-horizontal sign-up-form p-3">
+                        <h2 class="sign-up-title">Sign up</h2>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.Firstname, new { htmlAttributes = new { @class = "form-control", placeholder = "First name" } })
+                                @Html.ValidationMessageFor(model => model.Firstname, "", new { @class = "text-danger empty-msg" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.Lastname, new { htmlAttributes = new { @class = "form-control", placeholder = "Last name" } })
+                                @Html.ValidationMessageFor(model => model.Lastname, "", new { @class = "text-danger empty-msg" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger empty-msg" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger empty-msg" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control", placeholder = "Mobile" } })
+                                @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger empty-msg" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Address" } })
+                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger empty-msg" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input type="submit" value="Sign up" class="btn btn-primary hm-sign-up-btn" />
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div>
+                    @ViewBag.SuccesMsg
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    setTimeout(function () {
+        $(".empty-msg").fadeOut();
+    }, 5000);
+</script>

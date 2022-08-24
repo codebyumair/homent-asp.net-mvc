@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Homent.Models.tblHouse>
+
+@{
+    ViewBag.Title = "DeleteHouse";
+}
+
+@Html.Partial("_Navbar")
+
+<div class="container mt-3 p-3">
+    <h4 class="text-center text-danger mb-3">Are you sure you want to delete?</h4>
+    <div class="delete-container row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4  bg-white shadow-sm p-3 rounded">
+            @foreach (var house in Model)
+            {
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="@Url.Content(house.ImagePath)" alt="Alternate Text" class="col-md-12 col-12 rounded" style="height:200px;object-fit:cover;" />
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-12 mb-2 d-flex justify-content-between">
+                        <span class="fw-bold">
+                            @Html.DisplayNameFor(model => model.HouseNo)
+                        </span>
+                        <span class="text-secondary">
+                            @house.HouseNo
+                        </span>
+                    </div>
+                    <div class="col-md-12 mb-2 d-flex justify-content-between">
+                        <span class="fw-bold">
+                            @Html.DisplayNameFor(model => model.HouseName)
+                        </span>
+                        <span class="text-secondary">
+                            @house.HouseName
+                        </span>
+                    </div>
+                    <div class="col-md-12 mb-2 d-flex justify-content-between">
+                        <span class="fw-bold">
+                            @Html.DisplayNameFor(model => model.Type)
+                        </span>
+                        <span class="text-secondary">
+                            @house.Type
+                        </span>
+                    </div>
+                    <div class="col-md-12 mb-2 d-flex justify-content-between">
+                        <span class="fw-bold">
+                            @Html.DisplayNameFor(model => model.Room)
+                        </span>
+                        <span class="text-secondary">
+                            @house.Room
+                        </span>
+                    </div>
+                    <div class="col-md-12 mb-2 d-flex justify-content-between">
+                        <span class="fw-bold">
+                            @Html.DisplayNameFor(model => model.Rent)
+                        </span>
+                        <span class="text-secondary">
+                            @house.Rent
+                        </span>
+                    </div>
+                    <div class="col-md-12 mb-2 d-flex justify-content-between">
+                        <span class="fw-bold">
+                            @Html.DisplayNameFor(model => model.Deposit)
+                        </span>
+                        <span class="text-secondary">
+                            @house.Deposit
+                        </span>
+                    </div>
+                </div>
+            }
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions d-flex gap-2">
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                    <a href="/Account/Owner" class="btn btn-outline-success">Cancel</a>
+                </div>
+            }
+        </div>
+        <div class="col-md-4"></div>
+
+    </div>
+</div>
+
+
+

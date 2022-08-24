@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "OnBoarding";
+}
+
+
+@if (Request.Cookies["tenant"] != null)
+{
+    Response.Redirect("/Home/Index");
+}
+else if (Request.Cookies["owner"] != null){
+  Response.Redirect("/Account/Owner");
+}
+else
+{
+
+<div class="container-fluid bg-white onboarding-container  d-flex align-items-center justify-content-center flex-column">
+    <div class="container slide">
+        <div class="row p-2">
+            <div class="col-md-5">
+                <img src="~/Content/Images/need-a-house.gif" alt="Alternate Text" class="img-fluid" />
+            </div>
+            <div class="col-md-7  d-flex align-items-center justify-content-center flex-column">
+                <h1 class="text-primary">
+                    Need a house?
+                </h1>
+                <h4 class="text-secondary">Just go to Homent</h4>
+                <button class="btn btn-primary next" style="border-radius:50%; width:75px;height:75px;margin-top:4rem;">
+                    <i class="material-icons-round text-white">
+                        arrow_forward_ios
+                    </i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="container slide-1">
+        <div class="row p-2">
+            <div class="col-md-5">
+                <img src="~/Content/Images/location.gif" alt="Alternate Text" class="img-fluid" />
+            </div>
+            <div class="col-md-7  d-flex align-items-center justify-content-center flex-column">
+                <h1 class="text-primary">
+                    Search house at your place
+                </h1>
+                <h4 class="text-secondary">Choose house which suits your requirement</h4>
+                <button class="btn btn-primary next-btn next-btn-2">
+                    <i class="material-icons-round text-white">
+                        arrow_forward_ios
+                    </i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="container slide-2">
+        <div class="row p-2">
+            <div class="col-md-5">
+                <img src="~/Content/Images/all-info.gif" alt="Alternate Text" class="img-fluid" />
+            </div>
+            <div class="col-md-7  d-flex align-items-center justify-content-center flex-column">
+                <h1 class="text-primary">
+                    Get all house information
+                </h1>
+                <h4 class="text-secondary">Rent a house, you can easily get</h4>
+                <button class="btn btn-primary next-btn">
+                    <i class="material-icons-round text-white">
+                        arrow_forward_ios
+                    </i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <div class="container slide-3">
+        <div class="row p-2">
+            <div class="col-md-5">
+                <img src="~/Content/Images/contact-owner.gif" alt="Alternate Text" class="img-fluid" />
+            </div>
+            <div class="col-md-7  d-flex align-items-center justify-content-center flex-column">
+                <h1 class="text-primary">
+                    No need of any broker
+                </h1>
+                <h4 class="text-secondary">
+                    Can directly contact with the owmer
+                </h4>
+                <a href="/Account/Login" class="btn btn-primary d-flex align-items-center justify-content-center" style="border-radius:50%; width:75px;height:75px;margin-top:4rem;">
+                    <i class="material-icons-round text-white">
+                        arrow_forward_ios
+                    </i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+<script>
+    $(".next").click(function () {
+        $(".slide").hide();
+        $(".slide-1").show();
+    });
+    $(".next-btn").click(function () {
+        $(".slide-2").show();
+        $(".silde-3").hide();
+        $(".slide-1").hide();
+    });
+    $(".next-btn-2").click(function () {
+        $(".slide-1").hide();
+        $(".slide-2").hide();
+        $(".slide-3").show();
+    });
+</script>

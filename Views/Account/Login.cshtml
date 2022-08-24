@@ -1,0 +1,105 @@
+﻿@model Homent.Models.tblTenant
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="hm-login-form p-2">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-4 d-none bg-primary position-relative d-md-none d-lg-flex justify-content-center align-items-center flex-column ">
+                <img src="~/Content/Images/hm-logo-white.png" alt="homent-logo" width="200" class="mb-4 boarding-img" />
+                <button type="button" class="position-absolute bottom-0 mb-3 border-0 bg-primary text-white" data-bs-toggle="modal" data-bs-target="#signUpModal">
+                    New? Create a new account
+                </button>
+            </div>
+            <div class="col-lg-4 col-md-8 col-sm-10 col-10 bg-white">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal login-form-container">
+                        <img src="~/Content/Images/favicon.png" alt="homent-logo" class="d-flex justify-content-center title-img" />
+                        <h2 class="login-title">LOGIN</h2>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <div class="form-floating col-md-12">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control hm-input", id = "floatingInput", placeholder = "Email" } })
+                                <label for="floatingInput">Email </label>
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger invalid-msg col-12" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-floating col-md-12">
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control hm-input", id = "floatingPassword", placeholder = "Password" } })
+                                <label for="floatingPassword">Password</label>
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger invalid-msg" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input type="submit" value="Login" class="btn btn-primary hm-login-btn" />
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-danger" id="loginMsg">
+                                @ViewBag.LoginErrorMessage
+                            </p>
+                            <p class="text-danger">
+                                @ViewBag.Exception
+                            </p>
+                            <div class="d-flex justify-content-center">
+                                <button type="button" class="d-block d-lg-none d-sm-block bg-white border-0 position-absolute text-primary" data-bs-toggle="modal" data-bs-target="#signUpModal">
+                                    New? Create a new account
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered border-0">
+        <div class="modal-content" id="signUpModalContent">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white" id="signUpModalLable">Are you ?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row d-flex justify-content-around justify-content-sm-center justify-content-md-center gap-sm-3">
+                    <div class="col-sm-4 col-4 col-md-4 d-flex tenant-link px-2">
+                        <a href="/Account/SignUpOwner" class="d-flex gap-2 align-items-center">
+                            <i class="material-icons-outlined text-primary">
+                                people_alt
+                            </i>
+                            Owner
+                        </a>
+                    </div>
+                    <div class="col-sm-4 col-4 d-flex  owner-link px-2">
+                        <a href="/Account/SignUpTenant" class="d-flex gap-2 align-items-center">
+                            <i class="material-icons-outlined text-primary">
+                                person
+                            </i>
+                            Tenant
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    setTimeout(function () {
+        $("#loginMsg").fadeOut();
+        $(".invalid-msg").fadeOut();
+    }, 5000);
+</script>

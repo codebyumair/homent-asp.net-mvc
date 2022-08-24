@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+
+@Html.Partial("_Navbar")
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-12 col-lg-12 rounded position-relative">
+            <div class="row position-sticky top-0 py-3">
+                @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+                {
+                    <div class="row">
+                        <div class="col-md-10">
+                            <input type="search" placeholder="Search by location" autocomplete="off" name="searchValue" class="form-control border-0 shadow-sm search-input" />
+                        </div>
+                        <div class="col-md-2">
+                            <input type="submit" value="Search" name="seearch" class="btn btn-primary search-btn mt-2 mt-md-0 mt-sm-2" />
+                        </div>
+                    </div>
+
+                }
+            </div>
+            <div class="row house-list ">
+                @foreach (var house in ViewBag.HouseList)
+                {
+                    <div class="col-lg-4 col-md-4 mt-2">
+                        <div class="house-item shadow-sm p3 bg-white">
+                            <img src="@Url.Content(@house.ImagePath)" alt="HouseImage" class="img-fluid house-list-img" />
+                            <div class="d-flex align-items-center justify-content-between mt-2">
+                                <h5>@house.HouseName</h5>
+                                <h6 class="text-primary">₹ <span>@house.Rent</span></h6>
+                            </div>
+                            <p class="text-secondary">@house.Address</p>
+                            <div class="row d-flex align-items-center justify-content-between">
+                                <div class="col-md-4 d-flex align-items-center gap-1 feature-icons">
+                                    <i class="material-icons-outlined">
+                                        meeting_room
+                                    </i>@house.Room
+                                </div>
+                                <div class="col-md-4 d-flex align-items-center gap-1 feature-icons">
+                                    <i class="material-icons-round">
+                                        rounded_corner
+                                    </i>@house.FloorArea  <span> m<sup>2</sup></span>
+                                </div>
+                            </div>
+                            <div class="row mt-3 d-flex justify-content-center">
+                                <a href="/Home/House?HouseID=@house.HouseID" class="btn btn-primary view-details-btn">
+                                    View details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>  
+        @*Will add later*@
+        @*<div class="col-lg-6 col-md-12 mt-2 mt-md-2 mt-sm-2 ">
+            <div id="map" style="height:620px;border-radius:20px;" class="shadow-sm"></div>
+        </div>*@
+    </div>
+</div>
+
+
+
+@*<script>
+    mapboxgl.accessToken =
+        "pk.eyJ1IjoibXlzdGVyaW91czAwNSIsImEiOiJja3ptdHM3ZnYxd2JzMnZzOHV1dnFlZHhjIn0.eVanEXJ_TwoIyYy_Fnddnw";
+
+    navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
+        enableHighAccuracy: true,
+    });
+
+    function successLocation(position) {
+        setupMap([position.coords.longitude, position.coords.latitude]);
+    }
+
+    function errorLocation() {
+        setupMap([-2, 24, 53.48]);
+    }
+    function setupMap(center) {
+        const map = new mapboxgl.Map({
+            container: "map",
+            style: "mapbox://styles/mapbox/streets-v11",
+            center: center,
+            zoom: 15,
+        });
+        const nav = new mapboxgl.NavigationControl();
+        map.addControl(nav);
+
+
+        const directions = new MapboxDirections({
+            accessToken: mapboxgl.accessToken,
+        });
+
+        map.addControl(directions, "bottom-right");
+    }
+</script>*@

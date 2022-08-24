@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+}
+@Html.Partial("_Navbar")
+<div class="contact-container position-relative p-4 text-center d-flex justify-content-center flex-column">
+    <h2 class="text-primary">Contact us</h2>
+    <p>Any question or remarks? Just write a message or give a call</p>
+    <div class="links row d-flex justify-content-sm-start justify-content-start justify-content-md-center">
+        <div class="col-md-3">
+            <i class="material-icons-round">
+                location_on
+            </i>
+            <p class="">Mumbai,MH-400612</p>
+        </div>
+        <div class="col-md-3">
+            <span class="material-icons-round">
+                call
+            </span>
+            <p class="">+91 8070121396</p>
+        </div>
+        <div class="col-md-3">
+            <span class="material-icons-round">
+                email
+            </span>
+            <p class="">homent@gmail.com</p>
+        </div>
+    </div>
+    <div class="container contact-form mt-4">
+        <div class="row d-flex justify-content-center bg-white p-3">
+            <div class="col-md-6 bg-white col-sm-12 col-12 d-flex justify-content-center align-items-center">
+                <img src="~/Content/Images/contact-us.gif" class="img-fluid" width="400" />
+            </div>
+            <div class="col-md-6 bg-white col-sm-12 col-12">
+                <div class="form-group mb-4">
+                    <input type="text" placeholder="Enter your name" class="form-control" />
+                </div>
+                <div class="form-group mb-4">
+                    <input type="email" placeholder="Enter your email" class="form-control" />
+                </div>
+                <div class="form-group mb-4">
+                    <input type="text" placeholder="Enter your number" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" placeholder="Enter your message" cols="12" rows="5"></textarea>
+                </div>
+                <div class="form-group mt-4">
+                    <input type="submit" value="Send" class="btn btn-primary col-md-12 contact-btn" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

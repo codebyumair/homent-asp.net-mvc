@@ -1,0 +1,461 @@
+﻿
+
+:root {
+    --color-primary: #1c58e8;
+    --color-scecondary: #040415;
+    --input-bg-color: #f5f8ff;
+    --input-placeholder-color: #acacaf;
+    --text-danger: #dc3545;
+}
+
+
+* {
+    text-decoration: none;
+    color: var(--color-scecondary);
+    user-select: none;
+    scroll-behavior: smooth;
+    list-style-type: none;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+    display: none;
+    background-color: #cfe2ff;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+textarea {
+    width: 100%;
+    resize: none;
+}
+
+.hm-nav {
+    max-height: 65px;
+}
+
+.logo {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+table, td, tr, th {
+    border: none;
+}
+
+label {
+    color: var(--input-placeholder-color);
+}
+
+.onboarding-container {
+    width: 100%;
+    height: 100vh;
+}
+
+.next-btn {
+    margin-top: 4rem;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+.slide-1,
+.slide-2,
+.slide-3 {
+    display: none;
+}
+
+.error-body {
+    background-image: url("/Content/Images/404.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: #fff;
+    width: 100%;
+    height: 100vh;
+}
+
+
+.hm-nav {
+    z-index: 5;
+    background-color: var(--color-primary);
+}
+
+.hm-login-form,
+.sign-up-form-container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #C9D6FF;
+    background: -webkit-linear-gradient(to bottom, #E2E2E2, #C9D6FF);
+    background: linear-gradient(to bottom, #E2E2E2, #C9D6FF);
+}
+
+.login-form-container {
+    padding: 2rem;
+}
+
+.boarding-img {
+    width: 10rem;
+}
+
+.login-form-container {
+    padding: 3rem 1rem;
+}
+
+.title-img {
+    width: 56px;
+    margin: auto;
+}
+
+.login-form-container .login-title,
+.sign-up-form .sign-up-title {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.login-form-container input[type="email"],
+.login-form-container input[type="password"] {
+    margin: .5rem 0;
+    border: none;
+    background-color: var(--input-bg-color);
+}
+
+.login-form-container .hm-login-btn,
+.sign-up-form .hm-sign-up-btn {
+    width: 100%;
+    padding: .5rem 1rem;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    margin: 0 0 .5rem 0;
+}
+
+.sign-up-form input[type="text"],
+.sign-up-form input[type="password"],
+.sign-up-form input[type="email"] {
+    margin-bottom: 1rem;
+    background-color: var(--input-bg-color);
+    border: none;
+    padding: .5rem 1rem;
+}
+
+
+.modal-content {
+    border: 0;
+    border-radius: 10px;
+}
+
+.modal-header {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.btn-close {
+    box-sizing: content-box;
+    width: 1em;
+    height: 1em;
+    padding: 0.25em 0.25em;
+    color: #fff;
+    background: transparent url("/Content/Images/close.svg") no-repeat center;
+    border: 0;
+    border-radius: 0.25rem;
+}
+
+
+.tenant-link a i,
+.owner-link a i {
+    font-size: 3rem;
+}
+
+.tenant-link:hover,
+.owner-link:hover {
+    background-color: #e9ecef;
+    border-radius: 10px;
+}
+
+
+.no-owner-found {
+    background-image: url("/Content/Images/owner-404.gif");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 3rem;
+}
+
+
+.feature-icons,
+.feature-icons i {
+    font-size: .9rem;
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+    .feature-icons span,
+    .feature-icons sup {
+        color: var(--color-primary);
+    }
+
+.house-list {
+    height: 550px;
+    overflow-y: scroll;
+}
+
+    .house-list::-webkit-scrollbar {
+        width: 5px;
+        background-color: #cfe2ff;
+    }
+
+    .house-list::-webkit-scrollbar-thumb {
+        background: var(--color-primary);
+    }
+
+.house-list-img {
+    width: 100%;
+    height: 300px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+
+.search-input {
+    border-radius: 10px;
+    padding: .5rem 1rem;
+}
+
+.search-btn {
+    padding-inline: 2rem;
+    border-radius: 10px;
+}
+
+.house-item {
+    margin-bottom: 2rem;
+    border-radius: 20px;
+    padding: 1rem;
+    background-color: pink;
+}
+
+.view-details-btn {
+    width: 90%;
+    border-radius: 10px;
+}
+
+.rent-btn {
+    border-radius: 10px;
+}
+
+.mapboxgl-ctrl-attrib.mapboxgl-compact,
+a.mapboxgl-ctrl-logo {
+    display: none;
+}
+
+.house-main-img {
+    height: 300px;
+}
+
+    .house-main-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+
+.description {
+    height: 240px;
+    overflow-y: scroll;
+    position: relative;
+}
+
+    .description::-webkit-scrollbar {
+        width: 5px;
+        background-color: #cfe2ff;
+    }
+
+    .description::-webkit-scrollbar-thumb {
+        background: var(--color-primary);
+    }
+
+.description-title {
+    position: sticky;
+    top: 0;
+    padding-bottom: 1rem;
+}
+
+
+
+
+.upload-file {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--input-bg-color);
+    border-radius: 5px;
+    border: 2px dashed var(--color-primary);
+}
+
+    .upload-file label {
+        width: 100%;
+        height: 100%;
+    }
+
+
+.hm-add-btn,
+.hm-edit-btn {
+    width: 100%;
+}
+
+.add-input {
+    background-color: var(--input-bg-color);
+    border: none;
+}
+
+.add-home-icon {
+    font-size: 2rem;
+}
+
+
+#img-preview {
+    width: 80%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    display: none;
+}
+
+
+.house-details-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover
+}
+
+ul.nav.nav-tabs {
+    border: none;
+}
+
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+    color: #495057;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid var(--color-primary);
+}
+
+    .nav-tabs .nav-link.active:hover,
+    .nav-tabs .nav-item.show .nav-link:hover {
+        outline: none;
+        border: none;
+    }
+
+.edit-title i {
+    font-size: 2rem;
+}
+
+.edit-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(1fr));
+    gap: 3rem;
+}
+
+    .edit-form label {
+        color: var(--color-scecondary);
+        font-weight: bold;
+    }
+
+    .edit-form input[type="text"],
+    .edit-form input[type="number"] {
+        margin-top: .5rem;
+        background: var(--input-bg-color);
+        border: none;
+    }
+
+@media (min-width: 600px) {
+    .edit-form {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+    .edit-form {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.edit-btn {
+    padding-inline: 2rem;
+    margin: 0;
+}
+
+.contact-container {
+    width: 100%;
+    height: 90vh;
+}
+
+.contact-form .row {
+    border-radius: 20px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    background-color: var(--input-bg-color);
+    border: none;
+}
+
+.contact-btn {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.owner-info,
+.owner-house-info {
+    border-radius: 20px;
+}
+
+    .owner-house-info img {
+        border-radius: 20px;
+    }
+
+    .owner-house-info a {
+        border-radius: 10px;
+    }
+
+.no-house-container {
+    background-image: url("/Content/Images/owner-404.gif");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.about-us-images img {
+    width: 350px;
+}

@@ -1,0 +1,130 @@
+﻿@model IEnumerable<Homent.Models.tblHouse>
+
+@{
+    ViewBag.Title = "Owner";
+    @*int count = 0;*@
+   
+}
+@if (Request.Cookies["owner"] != null)
+{
+
+    @Html.Partial("_Navbar")
+
+    <div class="container mt-3">
+        <div class="row d-flex justify-content-between align-items-center bg-white shadow-sm p-4 owner-info">
+            <div class="col-md-2 col-sm-2 mt-2 mt-sm-0 d-flex gap-2">
+                <i class="material-icons-round text-primary">
+                    perm_contact_calendar
+                </i> @Request.Cookies["ownerID"].Value
+            </div>
+            <div class="col-md-2 col-sm-5 mt-2 mt-sm-0 d-flex gap-2">
+                <i class="material-icons-round text-primary">
+                    person
+                </i>@Request.Cookies["owner"].Value
+            </div>
+            <div class="col-md-2 col-sm-1 mt-2 mt-sm-0 d-flex gap-2">
+                <span class="material-icons-round text-primary">
+                    home
+                </span>
+              @ViewBag.TotalHouse
+            </div>
+            <div class="col-md-2 col-sm-5 mt-sm-3 mt-3 mt-md-2 mt-sm-0">
+                <a href="/House/AddHouse" class="btn btn-outline-primary">Add new house</a>
+            </div>
+        </div>
+
+
+    </div>
+<div class="container">
+
+    @if (Convert.ToInt32(@ViewBag.TotalHouse) == 0)
+    {
+
+
+        <div class="no-house-container mt-4">
+            <div class="d-flex flex-column text-center">
+                <span class="text-muted mt-3">No house added</span>
+                <a href="/House/AddHouse" class="btn btn-primary mt-2">Add new house</a>
+            </div>
+        </div>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <div class="bg-white shadow-sm mt-3 mb-3">
+                <div class="row d-flex bg-white shadow-sm p-4 owner-house-info">
+                    <div class="col-md-3">
+                        <img src="@Url.Content(item.ImagePath)" alt="House image" class="img-fluid mb-2 mb-sm-0 mb-md-0 col-12 col-md-0 col-sm-0" width="200" style="background:#eee;" />
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <dl>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.HouseNo)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(modelItem => item.HouseNo)
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="col-md-4">
+                                <dl>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.HouseName)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(modelItem => item.HouseName)
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="col-md-4">
+                                <dl>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Status)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(modelItem => item.Status)
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+
+                        <div class="row mt-0 mt-md-3">
+                            <div class="col-md-4">
+                                <dl>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Rent)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(modelItem => item.Rent)
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="d-flex gap-2 gap-md-5 gap-sm-3 owner-controls">
+                                    <a href="/House/Details?id=@item.HouseID" target="_self" class="btn btn-outline-primary px-2 px-sm-4 px-md-4">
+                                        View more
+                                    </a>
+                                    <a href="/House/EditHouse?id=@item.HouseID" target="_self" class="btn btn-primary px-2 px-sm-4 px-md-4">
+                                        Edit
+                                    </a>
+                                    <a href="/House/DeleteHouse?id=@item.HouseID" target="_self" class="btn btn-danger px-2 px-sm-4 px-md-4">
+                                        Delete
+                                    </a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }}
+    </div>
+}
+else
+{
+    Response.Redirect("/Account/Login");
+}

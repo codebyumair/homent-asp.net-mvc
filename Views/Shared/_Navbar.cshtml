@@ -1,0 +1,50 @@
+﻿<nav class="navbar navbar-expand-sm navbar-dark hm-nav bg-primary">
+    <div class="container">
+        <a href="/Home/Index" class="navbar-brand d-flex align-items-center justify-content-center">
+            <img src="~/Content/Images/brand.png" alt="hm-logo" width="180" class="img-fluid" />
+        </a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarCollapse" class="collapse navbar-collapse bg-primary p-2 p-md-0 p-sm-0">
+
+            <ul class="nav navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a href="/Home/Contact" class="nav-link text-white">Contact</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="/Home/About" class="nav-link text-white">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    @if (Request.Cookies["owner"] != null)
+                    {
+                        <a href="#" class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown">
+                            @Request.Cookies["owner"].Value.ToString()
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a href="/Account/Owner" class="dropdown-item">Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="/Account/Logout" class="dropdown-item">Logout</a>
+                        </div>
+                    }
+                    else if (Request.Cookies["tenant"] != null)
+                    {
+                        <a href="#" class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown">
+                            @Request.Cookies["tenant"].Value.ToString()
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Not logged in</a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a href="/Account/Login" class="dropdown-item">Login</a>
+                        </div>
+                    }
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <a href="/Account/Logout" class="dropdown-item">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>    
